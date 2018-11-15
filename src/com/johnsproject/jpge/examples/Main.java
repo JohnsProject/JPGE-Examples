@@ -3,6 +3,7 @@ package com.johnsproject.jpge.examples;
 public class Main {
 
 	public static void main(String[] args) {
+		args = new String[] {"2"};
 		if (args[0].equals("1")) {
 			new SimpleObjectViewer();
 		}
