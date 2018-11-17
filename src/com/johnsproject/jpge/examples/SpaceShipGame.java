@@ -94,7 +94,7 @@ public class SpaceShipGame implements JPGE{
 			e.printStackTrace();
 		}
 		spaceship = new SceneObject("ship", shipTransform, shipMesh);
-		spaceship.getRigidbody().useGravity(false);
+		spaceship.getRigidbody().setKinematic(true);
 		spaceship.getShader().setDrawingType(Shader.DRAW_FLAT);
 		Engine.getInstance().getScene().addSceneObject(spaceship);
 	}
@@ -103,7 +103,7 @@ public class SpaceShipGame implements JPGE{
 		for (int i = 0; i < bulletPool.length; i++) {
 			Transform bulletTransform = new Transform(new int[] {0,0,-10000}, new int[3], new int[] {1,1,1});
 			bulletPool[i] = new SceneObject("bullet " + i, bulletTransform, bulletMesh);
-			bulletPool[i].getRigidbody().useGravity(false);
+			bulletPool[i].getRigidbody().setKinematic(true);
 			bulletPool[i].getShader().setDrawingType(Shader.DRAW_FLAT);
 			Engine.getInstance().getScene().addSceneObject(bulletPool[i]);
 		}
@@ -115,7 +115,7 @@ public class SpaceShipGame implements JPGE{
 			int z = MathUtils.random(METEOR_START, METEOR_START + METEOR_START_RANGE);
 			Transform bulletTransform = new Transform(new int[] {x,0,z}, new int[3], new int[] {1,1,1});
 			meteorPool[i] = new SceneObject("meteor " + i, bulletTransform, meteorMesh);
-			meteorPool[i].getRigidbody().useGravity(false);
+			meteorPool[i].getRigidbody().setKinematic(true);
 			meteorPool[i].getRigidbody().addForce(0, 0, -1000);
 			meteorPool[i].getShader().setDrawingType(Shader.DRAW_FLAT);
 			Engine.getInstance().getScene().addSceneObject(meteorPool[i]);
@@ -125,7 +125,7 @@ public class SpaceShipGame implements JPGE{
 	public void initializeExplosion() {
 		Transform bulletTransform = new Transform(new int[] {0,0,-10000}, new int[3], new int[] {1,1,1});
 		explosion = new SceneObject("explosion", bulletTransform, explosionMesh);
-		explosion.getRigidbody().useGravity(false);
+		explosion.getRigidbody().setKinematic(true);
 		explosion.getShader().setDrawingType(Shader.DRAW_FLAT);
 		Engine.getInstance().getScene().addSceneObject(explosion);
 	}
