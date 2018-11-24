@@ -16,7 +16,6 @@ public class Main {
 			+ "Rendering Resolution: -RR width x height \n";
 	
 	public static void main(String[] args) {
-		args = new String[] {"-2"};
 		if (args.length < 1) {
 			System.out.println(help);
 			return;
