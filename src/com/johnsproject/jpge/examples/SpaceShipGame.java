@@ -22,12 +22,8 @@ import com.johnsproject.jpge.utils.VectorUtils;
 
 public class SpaceShipGame implements JPGE{
 	
+	@SuppressWarnings("unused")
 	private static final int vx = VectorUtils.X, vy = VectorUtils.Y, vz = VectorUtils.Z;
-	
-	private static final int W_WIDTH = 640;
-	private static final int W_HEIGHT = 640;
-	private static final int R_WIDTH = 1024;
-	private static final int R_HEIGHT = 1024;
 	
 	private static final int RANGE = 4000;
 	private static final int SHIP_SPEED = 100;
@@ -66,10 +62,10 @@ public class SpaceShipGame implements JPGE{
 		initializeMeteorPool();
 		Transform cameraTransform = new Transform(new int[] {0, -2000, -8000} , new int[3], new int[3]);
 		Transform lightTransform = new Transform(new int[] {3, 3, 0} , new int[3], new int[3]);
-		Camera camera = new Camera("testCam", cameraTransform, 0, 0, R_WIDTH, R_HEIGHT);
+		Camera camera = new Camera("testCam", cameraTransform, 0, 0, Main.R_WIDTH, Main.R_HEIGHT);
 		Light light = new Light("testLight", lightTransform);
-		Engine.getInstance().setSceneWindow(new SceneWindow(W_WIDTH, W_HEIGHT));
-		Engine.getInstance().getRenderBuffer().setSize(R_WIDTH, R_HEIGHT);
+		Engine.getInstance().setSceneWindow(new SceneWindow(Main.W_WIDTH, Main.W_HEIGHT));
+		Engine.getInstance().getRenderBuffer().setSize(Main.R_WIDTH, Main.R_HEIGHT);
 		Engine.getInstance().getScene().addCamera(camera);
 		Engine.getInstance().getScene().addLight(light);
 		initializeUI();

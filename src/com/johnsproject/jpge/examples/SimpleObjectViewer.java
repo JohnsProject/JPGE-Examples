@@ -30,11 +30,6 @@ import com.johnsproject.jpge.io.SOMImporter;
 
 public class SimpleObjectViewer implements JPGE{
 	
-	private static final int W_WIDTH = 640;
-	private static final int W_HEIGHT = 640;
-	private static final int R_WIDTH = 640;
-	private static final int R_HEIGHT = 640;
-	
 	private static final int B_WIDTH = 120;
 	private static final int B_HEIGHT = 30;
 	
@@ -79,10 +74,10 @@ public class SimpleObjectViewer implements JPGE{
 		sceneObject2 = new SceneObject("testSO2", transform4, mesh2);
 		sceneObject.getRigidbody().useGravity(false);
 		sceneObject2.getRigidbody().useGravity(false);
-		camera = new Camera("testCam", transform2, 0, 0, R_WIDTH, R_HEIGHT);
+		camera = new Camera("testCam", transform2, 0, 0, Main.R_WIDTH, Main.R_HEIGHT);
 		light = new Light("testLight", transform3);
-		Engine.getInstance().setSceneWindow(new SceneWindow(W_WIDTH, W_HEIGHT));
-		Engine.getInstance().getRenderBuffer().setSize(R_WIDTH, R_HEIGHT);
+		Engine.getInstance().setSceneWindow(new SceneWindow(Main.W_WIDTH, Main.W_HEIGHT));
+		Engine.getInstance().getRenderBuffer().setSize(Main.R_WIDTH, Main.R_HEIGHT);
 		Engine.getInstance().getScene().addSceneObject(sceneObject);
 		Engine.getInstance().getScene().addSceneObject(sceneObject2);
 		Engine.getInstance().getScene().addCamera(camera);
@@ -175,14 +170,14 @@ public class SimpleObjectViewer implements JPGE{
 		        }
 			}
 		}));
-		panel.add(createText("Physics", W_WIDTH-B_WIDTH, 5, B_WIDTH, B_HEIGHT-5));
-		panel.add(createButton("Use Gravity", W_WIDTH-B_WIDTH, B_HEIGHT+1, B_WIDTH, B_HEIGHT, new ActionListener() {
+		panel.add(createText("Physics", Main.W_WIDTH-B_WIDTH, 5, B_WIDTH, B_HEIGHT-5));
+		panel.add(createButton("Use Gravity", Main.W_WIDTH-B_WIDTH, B_HEIGHT+1, B_WIDTH, B_HEIGHT, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				sceneObject.getRigidbody().useGravity(!sceneObject.getRigidbody().useGravity());
 			}
 		}));
-		panel.add(createButton("Add Force", W_WIDTH-B_WIDTH, B_HEIGHT*2+1, B_WIDTH, B_HEIGHT, new ActionListener() {
+		panel.add(createButton("Add Force", Main.W_WIDTH-B_WIDTH, B_HEIGHT*2+1, B_WIDTH, B_HEIGHT, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				sceneObject.getRigidbody().addForce(0, -50, 0);
@@ -214,14 +209,14 @@ public class SimpleObjectViewer implements JPGE{
 		applyLightMove(keyInput);
 		MouseInputManager mouseInput = Engine.getInstance().getMouseInputManager();
 		if (mouseInput.getKey(MouseInputManager.RIGHT)) {
-			int x = (mouseInput.getMouseX()) - (W_WIDTH/2);
-			int y = (mouseInput.getMouseY()) - (W_HEIGHT/2);
-			sceneObject.getTransform().rotate(y/(W_HEIGHT>>4), x/(W_WIDTH>>4), 0);
+			int x = (mouseInput.getMouseX()) - (Main.W_WIDTH/2);
+			int y = (mouseInput.getMouseY()) - (Main.W_HEIGHT/2);
+			sceneObject.getTransform().rotate(y/(Main.W_HEIGHT>>4), x/(Main.W_WIDTH>>4), 0);
 		}
 		if (mouseInput.getKey(MouseInputManager.MIDDLE)) {
-			int x = (mouseInput.getMouseX()) - (W_WIDTH/2);
-			int y = (mouseInput.getMouseY()) - (W_HEIGHT/2);
-			camera.getTransform().rotate(y/(W_HEIGHT>>3), x/(W_WIDTH>>3), 0);
+			int x = (mouseInput.getMouseX()) - (Main.W_WIDTH/2);
+			int y = (mouseInput.getMouseY()) - (Main.W_HEIGHT/2);
+			camera.getTransform().rotate(y/(Main.W_HEIGHT>>3), x/(Main.W_WIDTH>>3), 0);
 		}
 	}
 	
